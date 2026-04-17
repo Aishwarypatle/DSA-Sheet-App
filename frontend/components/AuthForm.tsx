@@ -44,7 +44,6 @@ export default function AuthForm() {
                 toast.success("Account created 🚀")
             }
 
-            // 🔥 Save in Redux
             dispatch(
                 setCredentials({
                     user: res.user,
@@ -52,7 +51,6 @@ export default function AuthForm() {
                 })
             )
 
-            // 🔥 Persist
             localStorage.setItem("token", res.token)
             localStorage.setItem("user", JSON.stringify(res?.user))
 
@@ -76,15 +74,14 @@ export default function AuthForm() {
                         : "Start your DSA journey today"}
                 </p>
 
-                {/* Inputs */}
                 <div className="space-y-4">
                     {!isLogin && (
                         <input
                             type="text"
                             placeholder="Name"
                             className="w-full p-3 rounded-lg bg-[#0b1120] border-b border-gray-800 border border-gray-700 
-                    focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 
-                    outline-none transition"
+                            focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 
+                            outline-none transition"
                             onChange={(e) =>
                                 setForm({
                                     ...form,
@@ -96,8 +93,8 @@ export default function AuthForm() {
                     <input
                         placeholder="Email"
                         className="w-full p-3 rounded-lg bg-[#0b1120] border-b border-gray-800 border border-gray-700 
-                focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 
-                outline-none transition"
+                        focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 
+                        outline-none transition"
                         onChange={(e) =>
                             setForm({ ...form, email: e.target.value })
                         }
@@ -107,8 +104,8 @@ export default function AuthForm() {
                         type="password"
                         placeholder="Password"
                         className="w-full p-3 rounded-lg bg-[#0b1120] border-b border-gray-800 border border-gray-700 
-                focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 
-                outline-none transition"
+                        focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 
+                        outline-none transition"
                         onChange={(e) =>
                             setForm({ ...form, password: e.target.value })
                         }
@@ -116,17 +113,15 @@ export default function AuthForm() {
 
                 </div>
 
-                {/* Button */}
                 <button
                     onClick={handleSubmit}
                     className="w-full mt-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 
-                hover:scale-[1.02] hover:shadow-lg transition-all duration-200"
+                    hover:scale-[1.02] hover:shadow-lg transition-all duration-200"
                     disabled={!form.email || !form.password || (!isLogin && !form.name)}
                 >
                     {isLogin ? "Login" : "Create Account"}
                 </button>
 
-                {/* Divider */}
                 <div className="flex items-center my-6">
                     <div className="flex-1 h-px bg-gray-700" />
                     <span className="px-3 text-sm text-gray-500">or</span>

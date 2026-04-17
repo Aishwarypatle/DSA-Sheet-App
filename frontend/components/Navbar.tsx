@@ -18,7 +18,6 @@ export default function Navbar() {
     <nav className="bg-[#0d1117] border-b border-gray-800 px-6 py-4 text-gray-200">
       <div className="flex justify-between items-center">
 
-        {/* Logo */}
         <div
           onClick={() => router.push("/dashboard")}
           className="flex items-center gap-2 cursor-pointer"
@@ -31,7 +30,6 @@ export default function Navbar() {
           </span>
         </div>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex gap-3">
           {menuItems?.map((item) => {
             const isActive = pathname === item.path
@@ -56,7 +54,6 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Mobile Toggle */}
         <button
           className="md:hidden text-xl"
           onClick={() => setOpen(!open)}
@@ -65,7 +62,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {open && (
         <div className="mt-4 flex flex-col gap-3 md:hidden">
           {menuItems?.map((item) => {

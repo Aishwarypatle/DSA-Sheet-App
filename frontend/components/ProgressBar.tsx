@@ -6,7 +6,8 @@ export default function ProgressBar({
     total: number
 }) {
     const percent = (completed / total) * 100
-
+    console.log({percent})
+    
     return (
         <div className="mb-4">
             <p className="text-sm">{completed} / {total} completed</p>

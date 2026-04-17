@@ -15,8 +15,6 @@ export default function ProblemList({
 
     return (
         <div className="bg-[#111827] rounded-xl overflow-hidden m-4 mt-8">
-
-            {/* Header */}
             <div className="grid grid-cols-4 px-4 py-3 text-gray-500 text-sm border-b border-gray-700 sticky top-0 bg-[#0b1120] border-b border-gray-800">
                 <span>Problem</span>
                 <span>Difficulty</span>

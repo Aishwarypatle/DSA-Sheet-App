@@ -29,8 +29,6 @@ export default function TopicAccordion({
 
                 <span>{open ? "−" : "+"}</span>
             </div>
-
-            {/* Progress bar */}
             <div className="px-4 pb-3">
                 <div className="bg-gray-800 h-1 rounded">
                     <div
@@ -38,15 +36,19 @@ export default function TopicAccordion({
                         style={{
                             width: `${(completed / problems.length) * 100}%`,
                         }}
+            // <div className="px-4 pb-3">
+            //     <div className="bg-gray-800 h-1 rounded">
+            //         <div
+            //             className="bg-indigo-500 h-1 rounded"
+            //             style={{
+            //                 width: `${(completed / problems.length) * 100}%`,
+            //             }}
                     />
                 </div>
             </div>
 
-            {/* Body */}
             {open && (
                 <div className="border-t border-gray-800 p-4 space-y-6">
-
-                    {/* EASY */}
                     {problems?.filter((p: any) => p.difficulty === "easy").length > 0 && (
                         <div>
                             <h3 className="text-sm text-gray-400 mb-2">Easy</h3>
@@ -56,7 +58,6 @@ export default function TopicAccordion({
                             />
                         </div>
                     )}
-
                     {problems?.filter((p: any) => p.difficulty === "medium").length > 0 && (
                         <div>
                             <h3 className="text-sm text-gray-400 mb-2">Medium</h3>
@@ -66,7 +67,6 @@ export default function TopicAccordion({
                             />
                         </div>
                     )}
-
                     {problems?.filter((p: any) => p.difficulty === "hard").length > 0 && (
                         <div>
                             <h3 className="text-sm text-gray-400 mb-2">Hard</h3>
@@ -76,7 +76,6 @@ export default function TopicAccordion({
                             />
                         </div>
                     )}
-
                 </div>
             )}
         </div>

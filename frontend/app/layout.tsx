@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode}) {
         <Providers>
           {children}
           <ToastContainer
-            position="top-right"
+            position="top-center"
             autoClose={2000}
             theme="dark"
           />
