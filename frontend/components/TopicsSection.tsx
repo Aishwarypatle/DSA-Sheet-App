@@ -1,36 +1,29 @@
-import ProblemCard from "./ProblemCard";
-import { Problem } from "@/types";
+"use client"
+
+import TopicAccordion from "./TopicAccordion"
+import { groupByTopic } from "@/utils/groupProblems"
 
 export default function TopicsSection({
-  problems,
-  completedSet,
-}: {
-  problems: Problem[];
-  completedSet: Set<string>;
-}) {
-  const grouped = problems?.reduce((acc, p) => {
-    if (!acc[p.topic]) acc[p.topic] = [];
-    acc[p.topic].push(p);
-    return acc;
-  }, {} as Record<string, Problem[]>);
+    problems,
+    completedSet,
+}: any) {
+    const grouped = groupByTopic(problems)
 
-  return (
-    <div className="p-6">
-      {Object.entries(grouped).map(([topic, probs]) => (
-        <div key={topic} className="mb-6">
-          <h2 className="text-lg font-bold mb-3">{topic}</h2>
+    return (
+        <div className="p-6 max-w-6xl mx-auto">
 
-          <div className="grid md:grid-cols-2 gap-4">
-            {probs.map((p) => (
-              <ProblemCard
-                key={p._id}
-                problem={p}
-                isCompleted={completedSet.has(p._id)}
-              />
+            <h1 className="text-2xl font-bold mb-6">
+                DSA Sheet
+            </h1>
+
+            {Object.keys(grouped)?.map((topic) => (
+                <TopicAccordion
+                    key={topic}
+                    topic={topic}
+                    problems={grouped[topic]}
+                    completedSet={completedSet}
+                />
             ))}
-          </div>
         </div>
-      ))}
-    </div>
-  )
+    )
 }

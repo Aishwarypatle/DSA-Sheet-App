@@ -9,4 +9,4 @@ const problemSchema = new mongoose.Schema({
   articleLink: String,
 });
 
-module.exports = mongoose.model("Problem", problemSchema);
+module.exports = mongoose.model("Problem", problemSchema)

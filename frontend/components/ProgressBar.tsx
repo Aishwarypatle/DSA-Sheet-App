@@ -1,22 +1,22 @@
 export default function ProgressBar({
-  completed,
-  total,
+    completed,
+    total,
 }: {
-  completed: number;
-  total: number;
+    completed: number
+    total: number
 }) {
-  const percent = (completed / total) * 100;
+    const percent = (completed / total) * 100
 
-  return (
-    <div className="mb-4">
-      <p className="text-sm">{completed} / {total} completed</p>
+    return (
+        <div className="mb-4">
+            <p className="text-sm">{completed} / {total} completed</p>
 
-      <div className="bg-gray-300 h-2 rounded">
-        <div
-          className="bg-green-500 h-2 rounded"
-          style={{ width: `${percent}%` }}
-        />
-      </div>
-    </div>
-  )
+            <div className="bg-gray-300 h-2 rounded">
+                <div
+                    className="bg-emerald-500/30 hover:bg-emerald-400/60 h-2 rounded"
+                    style={{ width: `${percent}%` }}
+                />
+            </div>
+        </div>
+    )
 }

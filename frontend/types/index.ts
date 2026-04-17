@@ -10,6 +10,8 @@ export interface Problem {
 
 export interface User {
   token: string;
+  streak?: number;
+  lastActiveDate?: string;
 }
 
 export interface Progress {

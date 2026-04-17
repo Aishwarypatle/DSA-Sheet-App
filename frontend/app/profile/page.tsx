@@ -1,14 +1,11 @@
 "use client"
 
-import useAuth from "@/hooks/useAuth"
 import Navbar from "@/components/Navbar"
-import ProgressSection from "@/components/ProgressSection"
+import ProfileSection from "@/components/ProfileSection"
 import { useGetProblemsQuery } from "@/redux/api/problemApi"
 import { useGetProgressQuery } from "@/redux/api/progressApi"
 
-export default function DashboardPage() {
-    useAuth()
-
+export default function ProfilePage() {
     const { data: problems = [] } = useGetProblemsQuery()
     const { data: progress = [] } = useGetProgressQuery()
 
@@ -16,12 +13,10 @@ export default function DashboardPage() {
         <div>
             <Navbar />
 
-            <div className="min-h-screen">
-                <ProgressSection
-                    progress={progress}
-                    problems={problems}
-                />
-            </div>
+            <ProfileSection
+                completed={progress.length}
+                total={problems.length}
+            />
         </div>
     )
 }

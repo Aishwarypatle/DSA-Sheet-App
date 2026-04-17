@@ -1,12 +1,38 @@
-"use client";
+"use client"
 
-import { Provider } from "react-redux";
-import { store } from "@/redux/store";
+import { Provider, useDispatch } from "react-redux"
+import { store } from "@/redux/store"
+import { useEffect } from "react"
+import { setCredentials } from "@/redux/slices/authSlice"
+
+function InitAuth({ children }: { children: React.ReactNode }) {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+        const user = localStorage.getItem("user")
+
+        if (token && user) {
+            dispatch(
+                setCredentials({
+                    token,
+                    user: JSON?.parse(user),
+                })
+            )
+        }
+    }, [])
+
+    return <>{children}</>
+}
 
 export default function Providers({
-  children,
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode
 }) {
-  return <Provider store={store}>{children}</Provider>;
+    return (
+        <Provider store={store}>
+            <InitAuth>{children}</InitAuth>
+        </Provider>
+    )
 }
