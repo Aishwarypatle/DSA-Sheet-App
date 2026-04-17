@@ -15,11 +15,11 @@ export default function AuthForm() {
     confirmPassword: "",
   });
 
-  const handleSubmit = async () => {
-    const res = await login({
-      email: form.email,
-      password: form.password,
-    }).unwrap();
+    const handleSubmit = async () => {
+        const res = await login({
+            email: form.email,
+            password: form.password,
+    }).unwrap()
 
     localStorage.setItem("token", res.token);
     router.push("/dashboard");
@@ -109,7 +109,6 @@ export default function AuthForm() {
           </div>
         </div>
 
-        {/* Toggle */}
         <p className="text-sm text-gray-400 mt-6 text-center">
           {isLogin
             ? "Don't have an account?"
@@ -123,5 +122,5 @@ export default function AuthForm() {
         </p>
       </div>
     </div>
-  );
+  )
 }
