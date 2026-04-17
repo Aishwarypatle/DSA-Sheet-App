@@ -1,3 +1,4 @@
+require("dotenv").config();
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -28,8 +29,8 @@ exports.register = async (req, res) => {
       email,
       password: hashed,
     })
-
-    const token = jwt.sign({ id: user._id }, "SECRET")
+    
+    const token = jwt.sign({ id: user._id }, `${process.env.JWT_SECRET}`)
     res.status(201).json({
       success: true,
       message: "User Created Successfully",
@@ -60,25 +61,10 @@ exports.login = async (req, res) => {
   const user = await User.findOne({ email })
   if (!user) return res.status(400).json({ success: false, message: "User not found" })
 
-  const match = await bcrypt.compare(password, user.password)
+    const match = await bcrypt.compare(password, user.password)
     if (!match) return res.status(400).json({ success: false, message: "Wrong password" })
 
-  const token = jwt.sign({ id: user._id }, "SECRET")
-
+  const token = jwt.sign({ id: user._id }, `${process.env.JWT_SECRET}`)
   res.json({ token, message: "User Logged In Successfully", success: true, user })
 }
 
-
-exports.googleAuth = async (req, res) => {
-  const { email, name } = req.body
-
-  let user = await User.findOne({ email })
-
-  if (!user) {
-    user = await User.create({ email, name })
-  }
-
-  const token = jwt.sign({ id: user._id }, "SECRET")
-
-  res.json({ token })
-}

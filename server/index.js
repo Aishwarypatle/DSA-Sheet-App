@@ -16,14 +16,12 @@ app.use((req, res, next) => {
   console.log("Incoming:", req.method, req.url);
   next();
 })
-app.get("/test", (req, res) => {
-  res.send("Server is working ✅");
-});
+
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/problems", require("./routes/problemRoutes"));
 app.use("/api/progress", require("./routes/progressRoutes"));
 
 mongoose.connect(MONGO_URI).then(() => {
-  console.log("DB Connected");
+  console.log("DB Connected")
   app.listen(PORT, () => console.log("Server running", PORT));
 })
